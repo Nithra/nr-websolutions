@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-    base: '/nithya-portfolio/',
+    base: '/nr-websolutionsnpm install/',
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })
