@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import '../public/css/card-effects.css';
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #f8fafc;
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --bg: #0b1719;
+  --bg-soft: #102022;
+  --surface: #142728;
+  --surface-raised: #1a3232;
+  --border: rgba(255, 255, 255, 0.09);
+  --text: #f8fafc;
+  --muted: #a8c0bd;
+  --accent: #0f9f8f;
+  --accent-dark: #0b7f73;
+  --accent-light: #2dd4bf;
+  --accent-pale: #99f6e4;
+  --accent-heading: #ccfbf1;
+  --accent-rgb: 15, 159, 143;
+  --accent-dark-rgb: 11, 127, 115;
+  --accent-light-rgb: 45, 212, 191;
+  --accent-pale-rgb: 153, 246, 228;
+  --section-hero-bg: #0b1719;
+  --section-about-bg: #102022;
+  --section-experience-bg: #0d1b1d;
+  --section-services-bg: #102322;
+  --section-skills-bg: #0b191b;
+  --section-projects-bg: #102120;
+  --section-process-bg: #0b191b;
+  --section-why-bg: #102120;
+  --section-contact-bg: #0b191b;
+  --section-footer-bg: #081315;
+  --heading: 'Outfit', 'DM Sans', sans-serif;
+  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --container: 1160px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 92px;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: 'DM Sans', sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--heading);
+}
+
+::selection {
+  color: #fff;
+  background: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

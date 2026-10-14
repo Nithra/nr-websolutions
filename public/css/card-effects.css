@@ -1,0 +1,163 @@
+@property --card-glow-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.skill-card,
+.service-card,
+.project-card,
+.experience-card,
+.process-card,
+.reason-card,
+.about-cards .card,
+.info-card,
+.contact-prompt,
+.hero-profile-card {
+  isolation: isolate;
+}
+
+.skill-card::before,
+.service-card::before,
+.project-card::before,
+.experience-card::after,
+.process-card::before,
+.reason-card::before,
+.about-cards .card::before,
+.info-card::before,
+.contact-prompt::before,
+.hero-profile-card::after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--card-glow-angle, 0deg),
+    transparent 0deg,
+    transparent 45deg,
+    rgba(var(--accent-dark-rgb), 0.2) 80deg,
+    var(--accent) 120deg,
+    var(--accent-pale) 155deg,
+    rgba(var(--accent-light-rgb), 0.2) 190deg,
+    transparent 235deg,
+    transparent 290deg,
+    var(--accent-light) 325deg,
+    transparent 360deg
+  );
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  transition: opacity 220ms ease;
+}
+
+.experience-card::after {
+  z-index: 0;
+}
+
+.skill-card > *,
+.service-card > *,
+.project-card > *,
+.experience-card > *,
+.process-card > *,
+.reason-card > *,
+.about-cards .card > *,
+.info-card > *,
+.contact-prompt > *,
+.hero-profile-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.experience-card::before {
+  z-index: 2;
+}
+
+.hero-profile-card::before {
+  z-index: -1;
+}
+
+.skill-card:hover .skill-icon,
+.skill-card:focus-within .skill-icon,
+.service-card:hover .service-icon,
+.service-card:focus-within .service-icon,
+.process-card:hover .process-icon,
+.process-card:focus-within .process-icon,
+.reason-card:hover .reason-icon,
+.reason-card:focus-within .reason-icon,
+.info-card:hover .info-icon,
+.info-card:focus-within .info-icon {
+  border-color: rgba(var(--accent-pale-rgb), 0.72);
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(var(--accent-rgb), 0.32);
+}
+
+@keyframes rotating-card-border {
+  to {
+    --card-glow-angle: 360deg;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .skill-card:hover::before,
+  .service-card:hover::before,
+  .project-card:hover::before,
+  .experience-card:hover::after,
+  .process-card:hover::before,
+  .reason-card:hover::before,
+  .about-cards .card:hover::before,
+  .info-card:hover::before,
+  .contact-prompt:hover::before,
+  .hero-profile-card:hover::after {
+    animation: rotating-card-border 2.8s linear infinite;
+    opacity: 1;
+  }
+
+  .skill-card:hover {
+    box-shadow:
+      0 14px 34px rgba(4, 8, 24, 0.35),
+      0 0 24px rgba(var(--accent-rgb), 0.22);
+  }
+
+  .service-card:hover,
+  .project-card:hover,
+  .experience-card:hover,
+  .process-card:hover,
+  .reason-card:hover,
+  .about-cards .card:hover,
+  .info-card:hover,
+  .contact-prompt:hover {
+    box-shadow:
+      0 16px 38px rgba(3, 7, 18, 0.36),
+      0 0 22px rgba(var(--accent-rgb), 0.18);
+  }
+}
+
+.project-card:focus-within::before,
+.info-card:focus-within::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-card::before,
+  .service-card::before,
+  .project-card::before,
+  .experience-card::after,
+  .process-card::before,
+  .reason-card::before,
+  .about-cards .card::before,
+  .info-card::before,
+  .contact-prompt::before,
+  .hero-profile-card::after {
+    transition: none;
+  }
+}
