@@ -62,14 +62,12 @@
 .section-title h2 {
   margin-bottom: 14px;
   color: var(--accent-heading);
-  background: linear-gradient(105deg, #ffffff 4%, var(--accent-heading) 47%, var(--accent-light) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  font-size: clamp(38px, 4.8vw, 56px);
+  font-family: var(--heading);
+  font-size: clamp(38px, 4.8vw, 64px);
   font-weight: 800;
   letter-spacing: -0.045em;
-  line-height: normal;
-  -webkit-text-fill-color: transparent;
+  line-height: 1.08;
+  -webkit-text-fill-color: initial;
 }
 
 .section-title p {

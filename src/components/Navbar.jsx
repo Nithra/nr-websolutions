@@ -36,8 +36,12 @@ const Navbar = () => {
     >
       <div className="container">
 
-        <a href="#home" className="logo" onClick={closeMenu}>
-          <span>N</span>ithya
+        <a href="#home" className="logo" onClick={closeMenu} aria-label="NR WebSolutions home">
+          <img
+            src="/WebSolutions%20Monogram%20Logo.png"
+            alt="NR WebSolutions logo"
+            className="logo-image"
+          />
         </a>
 
         <button
@@ -83,11 +87,11 @@ const Navbar = () => {
         </nav>
 
         <div className="nav-right">
-          <a href="mailto:nithyar.dev@gmail.com"><FaEnvelope /></a>
-          <a href="https://www.linkedin.com/in/nithya-r-589b3943b/"><FaLinkedinIn /></a>
+          <a href="mailto:hello.nrwebsolutions@gmail.com"><FaEnvelope /></a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer"><FaLinkedinIn /></a>
 
           <a className="hire-btn" href="#contact">
-            Hire Me
+            Hire Us
           </a>
         </div>
 

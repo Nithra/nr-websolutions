@@ -13,12 +13,11 @@ const Contact = () => {
       <div className="container">
 
         <div className="section-title">
-          <h5>GET IN TOUCH</h5>
-          <h2>Tell me about your project</h2>
+          <h5>CONTACT US</h5>
+          <h2>Tell Us About Your Project</h2>
 
           <p>
-            Choose the kind of support you need and share a few details. I’ll
-            get back to you to discuss the next steps.
+            Have an idea? Let&apos;s discuss your requirements and create a website that helps your business grow.
           </p>
         </div>
 
@@ -27,10 +26,10 @@ const Contact = () => {
           <div className="contact-info">
             <div className="contact-prompt">
               <span className="contact-prompt-label">START A CONVERSATION</span>
-              <h3>Have a website idea?</h3>
+              <h3>Need a website that works for your business?</h3>
               <p>
-                Whether you need a complete website, a store, or help improving
-                what you already have, tell me what you’re working on.
+                Whether you are launching a new brand, refreshing an old website,
+                or building a more effective digital presence, we’d love to hear about it.
               </p>
             </div>
 
@@ -40,8 +39,8 @@ const Contact = () => {
               </span>
               <div>
                 <h4>Email</h4>
-                <a href="mailto:nithyar.dev@gmail.com">
-                 nithyar.dev@gmail.com
+                <a href="mailto:hello.nrwebsolutions@gmail.com">
+                  hello.nrwebsolutions@gmail.com
                 </a>
               </div>
             </div>
@@ -52,9 +51,7 @@ const Contact = () => {
               </span>
               <div>
                 <h4>Phone</h4>
-                <a href="tel:+9345046870">
-                  +91 9345046870
-                </a>
+                <p>Available on request</p>
               </div>
             </div>
 
@@ -64,13 +61,13 @@ const Contact = () => {
               </span>
               <div>
                 <h4>Location</h4>
-                <p>Madurai, Tamil Nadu, India</p>
+                <p>Remote • Serving clients worldwide</p>
               </div>
             </div>
 
             <a
               className="info-card info-card-link"
-              href="https://www.linkedin.com/in/nithya-r-589b3943b/"
+              href="https://www.linkedin.com"
               target="_blank"
               rel="noreferrer"
             >
@@ -91,8 +88,8 @@ const Contact = () => {
             className="contact-form"
           >
             <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
-            <input type="hidden" name="subject" value="New Portfolio Project Inquiry" />
-            <input type="hidden" name="from_name" value="Nithya Portfolio" />
+            <input type="hidden" name="subject" value="NR WebSolutions Project Inquiry" />
+            <input type="hidden" name="from_name" value="NR WebSolutions" />
 
             <div className="contact-form-heading">
               <h3>Project brief</h3>

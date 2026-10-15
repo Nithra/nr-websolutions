@@ -58,6 +58,22 @@ function App() {
         <WorkProcess />
         <WhyChooseMe />
         <Contact />
+      <section className="cta-band" id="cta-band">
+        <div className="container cta-band-inner">
+          <div>
+            <h2>Let&apos;s Build Your Next Website</h2>
+            <p>
+              Whether you need a brand-new website, redesign an existing one, or ongoing maintenance,
+              we&apos;re here to help.
+            </p>
+          </div>
+
+          <div className="cta-actions">
+            <a href="#contact" className="primary-btn cta-primary">Start Your Project</a>
+            <a href="https://wa.me/919345046870" target="_blank" rel="noreferrer" className="secondary-btn cta-secondary">Schedule a Free Consultation</a>
+          </div>
+        </div>
+      </section>
       </main>
       <Footer />
     </>

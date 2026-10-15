@@ -9,24 +9,22 @@ const Footer = () => {
 
         <div className="footer-content">
 
-          <h2 className="footer-logo">Nithya Raja</h2>
+          <h2 className="footer-logo">NR WebSolutions</h2>
 
           <p className="footer-text">
-            UI Developer • Frontend Developer • React Developer
+            Website Design • Web Development • Website Maintenance • React Development • WordPress • SEO
           </p>
 
           <div className="footer-social">
-         
-
             <a
-              href="https://www.linkedin.com/in/nithya-r-589b3943b/"
+              href="https://www.linkedin.com"
               target="_blank"
               rel="noreferrer"
             >
               <FaLinkedin />
             </a>
 
-            <a href="mailto:nithyar.dev@gmail.com">
+            <a href="mailto:hello.nrwebsolutions@gmail.com">
               <FaEnvelope />
             </a>
           </div>
@@ -39,8 +37,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>
-            © {new Date().getFullYear()} Nithya Raja. All Rights Reserved. |
-            Designed & Developed with React.js
+            © 2026 NR WebSolutions. All Rights Reserved.
           </p>
         </div>
 

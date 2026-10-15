@@ -1,91 +1,76 @@
-import { FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+import { FaArrowRight, FaCheck } from "react-icons/fa";
 import "./../../public/css/hero.css";
-import aboutright from "./../assets/about.png";
+
 const Hero = () => {
-  const handleCardPointerMove = (event) => {
-    if (event.pointerType === "touch") return;
-
-    const card = event.currentTarget;
-    const bounds = card.getBoundingClientRect();
-    const x = (event.clientX - bounds.left) / bounds.width;
-    const y = (event.clientY - bounds.top) / bounds.height;
-
-    card.style.setProperty("--tilt-x", `${(0.5 - y) * 8}deg`);
-    card.style.setProperty("--tilt-y", `${(x - 0.5) * 8}deg`);
-    card.style.setProperty("--shine-x", `${x * 100}%`);
-    card.style.setProperty("--shine-y", `${y * 100}%`);
-  };
-
-  const resetCardPointer = (event) => {
-    const card = event.currentTarget;
-    card.style.setProperty("--tilt-x", "0deg");
-    card.style.setProperty("--tilt-y", "0deg");
-    card.style.setProperty("--shine-x", "50%");
-    card.style.setProperty("--shine-y", "50%");
-  };
-
   return (
     <section className="hero" id="home">
-      <div className="hero-marquee" aria-hidden="true">
-        <div className="hero-marquee-track">
-          <span>FRONTEND DEVELOPMENT&nbsp;•&nbsp; REACT &amp; JAVASCRIPT&nbsp;•&nbsp; RESPONSIVE WEB DESIGN&nbsp;•&nbsp; WORDPRESS &amp; ELEMENTOR&nbsp;•&nbsp; UI DEVELOPMENT&nbsp;•&nbsp;</span>
-          <span>FRONTEND DEVELOPMENT&nbsp;•&nbsp; REACT &amp; JAVASCRIPT&nbsp;•&nbsp; RESPONSIVE WEB DESIGN&nbsp;•&nbsp; WORDPRESS &amp; ELEMENTOR&nbsp;•&nbsp; UI DEVELOPMENT&nbsp;•&nbsp;</span>
-        </div>
-      </div>
+      <div className="hero-ambient hero-ambient-left" aria-hidden="true" />
+      <div className="hero-ambient hero-ambient-right" aria-hidden="true" />
+
       <div className="container hero-container">
-
         <div className="hero-content">
-
-          <p className="hero-subtitle">Hello, I'm Nithya Raja</p>
+          <p className="hero-subtitle">Website Design &amp; Development</p>
 
           <h1>
-            Nithya <span>Raja</span>
+            Web Solutions
+            <span>That Grow Your Business</span>
           </h1>
 
-          <h2>Frontend / Web Developer</h2>
-
           <p className="hero-description">
-            UI developer with 10+ years of experience creating responsive,
-            user-friendly websites and digital experiences with React,
-            WordPress, and modern front-end technologies.
+            I help small businesses, startups and entrepreneurs build modern,
+            responsive websites with WordPress, React and digital marketing support.
           </p>
 
+          <ul className="hero-checklist" aria-label="Key services">
+            <li><span><FaCheck /></span> Modern &amp; Responsive Design</li>
+            <li><span><FaCheck /></span> Fast &amp; Secure</li>
+            <li><span><FaCheck /></span> SEO Friendly</li>
+            <li><span><FaCheck /></span> Ongoing Support</li>
+          </ul>
+
           <div className="hero-buttons">
-            <a className="primary-btn" href="#contact">Let's work together</a>
-            <a className="secondary-btn" href="#projects">Explore my work</a>
+            <a className="primary-btn" href="#contact">
+              Get Free Quote
+              <FaArrowRight />
+            </a>
+            <a className="secondary-btn" href="#projects">View Portfolio</a>
           </div>
 
-          <div className="social-icons">
-            <a href="mailto:nithyar.dev@gmail.com" aria-label="Email Nithya"><FaEnvelope /></a>
-            <a href="https://www.linkedin.com/in/nithya-r-589b3943b/" target="_blank" rel="noreferrer" aria-label="Nithya on LinkedIn"><FaLinkedinIn /></a>
+          <div className="hero-trustline" aria-label="Client trust indicators">
+            <div className="hero-avatars" aria-hidden="true">
+              <span>AK</span>
+              <span>SR</span>
+              <span>MN</span>
+            </div>
+            <div className="hero-trust-copy">
+              <strong>100+</strong>
+              <span>Happy Clients</span>
+            </div>
+            <div className="hero-trust-locale">Local &amp; International</div>
           </div>
         </div>
 
-        <div className="hero-image">
-          <div
-            className="hero-profile-card"
-            onPointerMove={handleCardPointerMove}
-            onPointerLeave={resetCardPointer}
-          >
-            <div className="profile-circle">
-              <span className="profile-badge">FEATURED DEVELOPER</span>
-              <img src={aboutright} alt="Illustration of Nithya Raja working as a web developer" />
-              <div className="hero-image-label">
-                <div>
-                  <span className="profile-name">Nithya Raja</span>
-                  <span className="profile-role">Frontend &amp; UI Developer</span>
-                </div>
-                <span className="profile-location">Madurai, India</span>
-              </div>
-            </div>
-            <div className="hero-stats" aria-label="Career highlights">
-              <div className="hero-stat"><strong>10+</strong><span>Years experience</span></div>
-              <div className="hero-stat"><strong>100+</strong><span>Projects completed</span></div>
-              <div className="hero-stat"><strong>20+</strong><span>Happy clients</span></div>
-            </div>
+        <div className="hero-visual" aria-label="Website design preview">
+          <div className="hero-plant hero-plant-left" aria-hidden="true" />
+          <div className="hero-plant hero-plant-right" aria-hidden="true" />
+          <div className="hero-callout hero-callout-left" aria-hidden="true">
+            <span>Ideas</span>
+            <span>Design</span>
+            <span>Develop</span>
+            <span>Grow</span>
           </div>
-        </div>
 
+          <div className="hero-device-shell">
+            <img src="/images/hero.png" alt="NR WebSolutions website preview" />
+          </div>
+
+          <div className="hero-badge" aria-label="NR WebSolutions logo badge">
+            <img src="/images/logo.png" alt="NR WebSolutions logo" />
+            <span>NR</span>
+          </div>
+
+          <div className="hero-mouse" aria-hidden="true" />
+        </div>
       </div>
     </section>
   );

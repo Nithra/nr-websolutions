@@ -25,42 +25,42 @@ const services = [
   {
     icon: <FaLaptopCode />,
     number: "01",
-    title: "Website Development",
+    title: "Website Design",
     description:
-      "A polished, responsive website shaped around your business, audience, and goals.",
-    tags: ["Business websites", "Landing pages", "Responsive design"],
+      "Modern UI/UX designs that reflect your brand and create a trustworthy first impression.",
+    tags: ["Modern layouts", "Responsive UI", "Brand-focused design"],
   },
   {
     icon: <FaShoppingBag />,
     number: "02",
-    title: "E-commerce Stores",
+    title: "Website Development",
     description:
-      "An easy-to-shop online store with thoughtful product pages and a smooth customer journey.",
-    tags: ["WooCommerce", "Product pages", "Store setup"],
+      "Responsive websites using HTML, CSS, JavaScript, React, and WordPress to support growth.",
+    tags: ["Business websites", "Landing pages", "Responsive design"],
   },
   {
     icon: <FaWordpress />,
     number: "03",
-    title: "WordPress & Elementor",
+    title: "Website Redesign",
     description:
-      "Flexible WordPress websites you can update confidently as your business grows.",
-    tags: ["WordPress", "Elementor", "Content updates"],
+      "Give your existing website a fresh, modern, and professional look that performs better.",
+    tags: ["Refresh", "Modern branding", "Conversion-focused"],
   },
   {
     icon: <FaCode />,
     number: "04",
-    title: "React UI Development",
+    title: "Website Maintenance",
     description:
-      "Modern front-end interfaces with reusable components and responsive interactions.",
-    tags: ["React", "JavaScript", "UI components"],
+      "Regular updates, backups, security checks, and ongoing support to keep your website healthy.",
+    tags: ["Maintenance", "Security", "Support"],
   },
   {
     icon: <FaTools />,
     number: "05",
-    title: "Website Care & Improvements",
+    title: "SEO Optimization",
     description:
-      "Practical website updates, ongoing maintenance, and usability refinements.",
-    tags: ["Maintenance", "Performance", "UI improvements"],
+      "Improve your website visibility on Google with technical and on-page SEO improvements.",
+    tags: ["Technical SEO", "On-page SEO", "Search visibility"],
   },
 ];
 
@@ -117,11 +117,10 @@ const Services = () => {
   <section className="services" id="services" ref={sectionRef}>
     <div className="container">
       <div className="section-title">
-        <h5>What I do</h5>
-        <h2>Let’s Build Something Great</h2>
+        <h5>OUR SERVICES</h5>
+        <h2>Website Design &amp; Development Services</h2>
         <p>
-          From a first business website to an established online store, find the
-          right support for your next step.
+          We help businesses create faster, more credible, and more conversion-friendly digital experiences.
         </p>
       </div>
 

@@ -4,7 +4,7 @@
   top: 0;
   width: 100%;
   border-bottom: 1px solid var(--border);
-  background: rgba(11, 23, 25, 0.92);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(18px);
 }
 
@@ -17,13 +17,22 @@
 }
 
 .logo {
+  display: inline-flex;
   flex-shrink: 0;
+  align-items: center;
   color: var(--text);
   font-family: var(--heading);
   font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.06em;
   text-decoration: none;
+}
+
+.logo-image {
+  display: block;
+  width: clamp(120px, 13vw, 160px);
+  height: auto;
+  object-fit: contain;
 }
 
 .logo span {
@@ -41,7 +50,7 @@
 
 .nav-links a {
   position: relative;
-  color: #cbd5e1;
+  color: #475569;
   font-size: 15px;
   text-decoration: none;
   transition: color 180ms ease;
@@ -88,7 +97,7 @@
   place-items: center;
   border: 1px solid var(--border);
   border-radius: 50%;
-  color: #cbd5e1;
+  color: #334155;
   font-size: 14px;
   text-decoration: none;
   transition: border-color 180ms ease, color 180ms ease;
@@ -127,6 +136,7 @@
   border: 1px solid var(--border);
   border-radius: 6px;
   background: var(--surface);
+  color: var(--text);
   font-size: 17px;
   cursor: pointer;
   transition: border-color 180ms ease, color 180ms ease;
@@ -157,7 +167,7 @@
     max-height: 0;
     padding: 0 24px;
     border-bottom: 1px solid transparent;
-    background: var(--bg);
+    background: var(--surface);
     opacity: 0;
     visibility: hidden;
     transition: max-height 280ms ease, opacity 200ms ease, visibility 200ms ease;
