@@ -264,6 +264,125 @@
   box-shadow: 0 8px 24px rgba(var(--accent-dark-rgb), 0.3);
 }
 
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.contact-form button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.contact-quote-dialog {
+  position: fixed;
+  width: min(720px, calc(100% - 32px));
+  max-width: 720px;
+  max-height: min(90vh, 860px);
+  padding: 0;
+  overflow: auto;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 18px;
+  background: #f6fbfa;
+  color: #102747;
+  box-shadow: 0 24px 80px rgba(10, 28, 46, 0.28);
+}
+
+.contact-quote-dialog::backdrop {
+  background: rgba(8, 20, 35, 0.68);
+  backdrop-filter: blur(4px);
+}
+
+.contact-quote-content {
+  position: relative;
+  padding: 28px;
+}
+
+.contact-dialog-close {
+  position: absolute;
+  z-index: 1;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 50%;
+  background: #fff;
+  color: #365066;
+  cursor: pointer;
+}
+
+.contact-dialog-close:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+.contact-quote-dialog .contact-form {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.contact-quote-dialog .contact-form-heading {
+  align-items: flex-end;
+  margin: 0 52px 22px 0;
+}
+
+.contact-quote-dialog .contact-form-heading h2 {
+  margin: 0;
+  color: #102747;
+  font-family: var(--heading);
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.contact-quote-eyebrow {
+  margin: 0 0 4px;
+  color: #078d88;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.contact-quote-dialog .contact-form-heading > p {
+  color: #64778b;
+  font-size: 12px;
+}
+
+.contact-quote-dialog .contact-form label {
+  color: #273d53;
+  font-size: 13px;
+}
+
+.contact-quote-dialog .contact-form input,
+.contact-quote-dialog .contact-form select,
+.contact-quote-dialog .contact-form textarea {
+  border-color: rgba(15, 23, 42, 0.16);
+  background: #fff;
+  color: #102747;
+  font-size: 14px;
+}
+
+.contact-quote-dialog .contact-form input::placeholder,
+.contact-quote-dialog .contact-form textarea::placeholder,
+.contact-quote-dialog .contact-form select:invalid {
+  color: #8291a1;
+}
+
+.contact-quote-dialog .contact-form textarea {
+  min-height: 100px;
+}
+
+.contact-quote-dialog .contact-form button {
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+}
+
 @media (max-width: 900px) {
   .contact-wrapper {
     grid-template-columns: 1fr;
@@ -293,5 +412,16 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 3px;
+  }
+
+  .contact-quote-content {
+    padding: 22px 18px;
+  }
+
+  .contact-quote-dialog .contact-form-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+    margin-right: 42px;
   }
 }
