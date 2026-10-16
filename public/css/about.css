@@ -1,77 +1,25 @@
 .about {
   position: relative;
-  padding: 68px 0;
-  background: var(--section-about-bg);
+  display: flex;
+  min-height: 420px;
+  align-items: center;
+  padding: 48px 0;
+  background-color: #f2f9f7;
+  background-image: var(--about-banner);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .about-container {
   display: grid;
   align-items: center;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: clamp(38px, 6vw, 90px);
+  grid-template-columns: minmax(0, 1fr);
 }
 
-.about-visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 480px;
-}
-
-.about-visual-ring {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: min(100%, 420px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(94, 234, 212, 0.35), rgba(20, 184, 166, 0.08) 55%, transparent 72%);
-}
-
-.about-visual-card {
-  position: relative;
-  width: min(82%, 320px);
-  padding: 20px 18px 0;
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 26px 26px 16px 16px;
-  background: linear-gradient(180deg, #f4faf8 0%, #dffaf4 100%);
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
-}
-
-.about-visual-card::before {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  width: 58px;
-  height: 58px;
-  border-radius: 18px;
-  background: rgba(20, 184, 166, 0.14);
-  content: '';
-}
-
-.about-visual-card img {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-}
-
-.about-speech {
-  position: absolute;
-  left: 14px;
-  top: 110px;
-  padding: 8px 12px;
-  border: 1px solid rgba(15, 23, 42, 0.05);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.8);
-  color: #0f172a;
-  font-family: var(--heading);
-  font-size: 18px;
-  font-weight: 600;
-  transform: rotate(-13deg);
+.about-content {
+  width: min(100%, 570px);
+  margin-left: auto;
 }
 
 .about-content h5 {
@@ -150,25 +98,19 @@
 
 @media (max-width: 760px) {
   .about {
+    min-height: auto;
     padding: 52px 0;
+    background-position: 25% center;
+    background-size: auto 100%;
   }
 
-  .about-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .about-visual {
-    min-height: 360px;
-  }
-
-  .about-speech {
-    left: 30px;
-    top: 40px;
+  .about-content {
+    padding: 24px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.88);
   }
 
   .about-stats {
     grid-template-columns: 1fr;
   }
 }
-

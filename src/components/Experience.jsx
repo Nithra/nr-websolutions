@@ -109,7 +109,6 @@ const Experience = () => {
       <div className="container">
 
         <div className="section-title">
-          <h5>WORK EXPERIENCE</h5>
           <h2>10+ Years Professional Journey</h2>
           <p>
             Throughout my career, I've worked with startups and international

@@ -1,19 +1,15 @@
 import "./../../public/css/about.css";
-import aboutright from "./../assets/about.png";
 
 const About = () => {
   return (
-    <section className="about" id="about">
+    <section
+      className="about"
+      id="about"
+      style={{
+        "--about-banner": `url("${import.meta.env.BASE_URL}images/about-banner.png")`,
+      }}
+    >
       <div className="container about-container">
-        <div className="about-visual">
-          <div className="about-visual-ring">
-            <div className="about-visual-card">
-              <img src={aboutright} alt="Business professional working on website development" />
-            </div>
-          </div>
-          <div className="about-speech">Helping businesses grow online</div>
-        </div>
-
         <div className="about-content">
           <h5>ABOUT US</h5>
           <h2>Helping Businesses Build a Strong Online Presence</h2>

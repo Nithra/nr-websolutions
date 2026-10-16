@@ -3,17 +3,21 @@ import "./../../public/css/hero.css";
 
 const Hero = () => {
   return (
-    <section className="hero" id="home">
-      <div className="hero-ambient hero-ambient-left" aria-hidden="true" />
-      <div className="hero-ambient hero-ambient-right" aria-hidden="true" />
-
+    <section
+      className="hero"
+      id="home"
+      style={{
+        "--hero-banner": `url("${import.meta.env.BASE_URL}images/hero-banner.png")`,
+      }}
+    >
       <div className="container hero-container">
         <div className="hero-content">
           <p className="hero-subtitle">Website Design &amp; Development</p>
 
           <h1>
-            Web Solutions
-            <span>That Grow Your Business</span>
+            <span className="hero-heading-line">Web Solutions</span>
+            <span className="hero-heading-line">That <em>Grow Your</em></span>
+            <span className="hero-heading-line">Business</span>
           </h1>
 
           <p className="hero-description">
@@ -33,7 +37,7 @@ const Hero = () => {
               Get Free Quote
               <FaArrowRight />
             </a>
-            <a className="secondary-btn" href="#projects">View Portfolio</a>
+            <a className="secondary-btn" href="#projects">View Projects</a>
           </div>
 
           <div className="hero-trustline" aria-label="Client trust indicators">
@@ -41,35 +45,13 @@ const Hero = () => {
               <span>AK</span>
               <span>SR</span>
               <span>MN</span>
+              <span>NR</span>
             </div>
             <div className="hero-trust-copy">
-              <strong>100+</strong>
-              <span>Happy Clients</span>
+              <strong>20+ Happy Clients</strong>
+              <span>Local &amp; International</span>
             </div>
-            <div className="hero-trust-locale">Local &amp; International</div>
           </div>
-        </div>
-
-        <div className="hero-visual" aria-label="Website design preview">
-          <div className="hero-plant hero-plant-left" aria-hidden="true" />
-          <div className="hero-plant hero-plant-right" aria-hidden="true" />
-          <div className="hero-callout hero-callout-left" aria-hidden="true">
-            <span>Ideas</span>
-            <span>Design</span>
-            <span>Develop</span>
-            <span>Grow</span>
-          </div>
-
-          <div className="hero-device-shell">
-            <img src="/images/hero.png" alt="NR WebSolutions website preview" />
-          </div>
-
-          <div className="hero-badge" aria-label="NR WebSolutions logo badge">
-            <img src="/images/logo.png" alt="NR WebSolutions logo" />
-            <span>NR</span>
-          </div>
-
-          <div className="hero-mouse" aria-hidden="true" />
         </div>
       </div>
     </section>

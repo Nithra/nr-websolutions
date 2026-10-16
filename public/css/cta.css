@@ -1,0 +1,124 @@
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  min-height: 210px;
+  padding: 42px 0;
+  background-color: #eafbfa;
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02)),
+    var(--cta-banner);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cta-band-inner {
+  display: grid;
+  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.cta-band-inner > div:first-child {
+  max-width: 440px;
+}
+
+.cta-band h2 {
+  margin: 0 0 6px;
+  color: #102747;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.cta-band p {
+  margin: 0;
+  color: #536a80;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.cta-primary,
+.cta-secondary {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 17px;
+  border: 1px solid #0eaa9b;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.cta-primary {
+  background: #0eaa9b;
+  color: #fff;
+}
+
+.cta-secondary {
+  background: rgba(255, 255, 255, 0.84);
+  color: #102747;
+}
+
+.cta-primary:hover,
+.cta-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.cta-secondary:hover {
+  background: #fff;
+}
+
+@media (max-width: 760px) {
+  .cta-band {
+    padding: 38px 0;
+    background-position: 68% center;
+    background-size: cover;
+  }
+
+  .cta-band-inner > div:first-child {
+    max-width: 390px;
+  }
+
+  .cta-band p {
+    max-width: 330px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-band {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.84)),
+      var(--cta-banner);
+    background-position: 70% center;
+  }
+
+  .cta-actions {
+    gap: 8px;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    min-height: 38px;
+    padding: 0 13px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-primary,
+  .cta-secondary {
+    transition: none;
+  }
+}

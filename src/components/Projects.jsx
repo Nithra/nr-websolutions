@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { FaArrowRight, FaExternalLinkAlt, FaTimes } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaChevronLeft,
+  FaChevronRight,
+  FaExternalLinkAlt,
+  FaTimes,
+} from "react-icons/fa";
 import website01 from "./../assets/projects/website-01.png";
 import website02 from "./../assets/projects/website-02.png";
 import website03 from "./../assets/projects/website-03.png";
@@ -155,6 +161,7 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const dialogRef = useRef(null);
   const lastTriggerRef = useRef(null);
+  const projectScrollerRef = useRef(null);
 
   const visibleProjects = projects.filter(
     (project) => activeCategory === "All work" || project.category === activeCategory,
@@ -170,6 +177,19 @@ const Projects = () => {
 
   const closeDialog = () => setSelectedProject(null);
 
+  const scrollProjects = (direction) => {
+    const scroller = projectScrollerRef.current;
+    const card = scroller?.firstElementChild;
+    if (!scroller || !card) return;
+
+    const gap = Number.parseFloat(window.getComputedStyle(scroller).columnGap) || 0;
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "auto"
+      : "smooth";
+
+    scroller.scrollBy({ left: direction * (card.getBoundingClientRect().width + gap), behavior });
+  };
+
   const handleDialogClose = () => {
     setSelectedProject(null);
     lastTriggerRef.current?.focus();
@@ -178,13 +198,45 @@ const Projects = () => {
   return (
     <section className="project-section" id="projects">
       <div className="container">
-        <div className="section-title">
-          <h5>Selected work</h5>
-          <h2>Recent client work</h2>
-          <p>
-            A selection of websites built for businesses, education, healthcare,
-            and community organizations.
-          </p>
+        <div className="projects-heading">
+          <div>
+            <p className="projects-eyebrow">OUR WORK</p>
+            <h2>Recent Projects</h2>
+            <p>A few of the websites I&apos;ve designed and developed.</p>
+          </div>
+          <div className="projects-heading-actions">
+            <div className="projects-controls" role="group" aria-label="Project controls">
+              <button
+                type="button"
+                aria-label="Scroll projects left"
+                onClick={() => scrollProjects(-1)}
+              >
+                <FaChevronLeft aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                aria-label="Scroll projects right"
+                onClick={() => scrollProjects(1)}
+              >
+                <FaChevronRight aria-hidden="true" />
+              </button>
+            </div>
+            <button
+              className="projects-all-link"
+              type="button"
+              onClick={() => {
+                const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                  ? "auto"
+                  : "smooth";
+                document.getElementById("cta-band")?.scrollIntoView({
+                  behavior,
+                  block: "start",
+                });
+              }}
+            >
+              Build Your Website <FaArrowRight aria-hidden="true" />
+            </button>
+          </div>
         </div>
 
         <div className="project-filters" role="group" aria-label="Filter projects by category">
@@ -207,7 +259,14 @@ const Projects = () => {
           })}
         </div>
 
-        <div className="projects-grid">
+        <div
+          className="projects-grid"
+          id="projects-list"
+          ref={projectScrollerRef}
+          role="region"
+          aria-label="Recent projects"
+          tabIndex={0}
+        >
           {visibleProjects.map((project, index) => (
             <article className="project-card" key={project.title}>
               <button

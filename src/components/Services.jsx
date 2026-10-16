@@ -1,204 +1,103 @@
-import { useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Autoplay,
-  EffectCoverflow,
-  Keyboard,
-  Pagination,
-} from "swiper/modules";
-import {
-  FaArrowRight,
-  FaChevronLeft,
-  FaChevronRight,
-  FaCode,
-  FaLaptopCode,
-  FaShoppingBag,
-  FaTools,
-  FaWordpress,
-} from "react-icons/fa";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { FaArrowRight, FaCalendarAlt, FaHeart, FaStar, FaUsers } from "react-icons/fa";
 import "./../../public/css/services.css";
 
 const services = [
   {
-    icon: <FaLaptopCode />,
-    number: "01",
+    image: "service-img1.png",
     title: "Website Design",
-    description:
-      "Modern UI/UX designs that reflect your brand and create a trustworthy first impression.",
-    tags: ["Modern layouts", "Responsive UI", "Brand-focused design"],
+    description: "Modern, responsive designs for all businesses.",
   },
   {
-    icon: <FaShoppingBag />,
-    number: "02",
-    title: "Website Development",
-    description:
-      "Responsive websites using HTML, CSS, JavaScript, React, and WordPress to support growth.",
-    tags: ["Business websites", "Landing pages", "Responsive design"],
+    image: "service-img2.png",
+    title: "WordPress Development",
+    description: "Custom themes, plugins and easy-to-manage websites.",
   },
   {
-    icon: <FaWordpress />,
-    number: "03",
+    image: "service-img3.png",
+    title: "React Development",
+    description: "Fast and interactive web applications.",
+  },
+  {
+    image: "service-img4.png",
     title: "Website Redesign",
-    description:
-      "Give your existing website a fresh, modern, and professional look that performs better.",
-    tags: ["Refresh", "Modern branding", "Conversion-focused"],
+    description: "Give your website a fresh, modern look.",
   },
   {
-    icon: <FaCode />,
-    number: "04",
-    title: "Website Maintenance",
-    description:
-      "Regular updates, backups, security checks, and ongoing support to keep your website healthy.",
-    tags: ["Maintenance", "Security", "Support"],
-  },
-  {
-    icon: <FaTools />,
-    number: "05",
+    image: "service-img5.png",
     title: "SEO Optimization",
-    description:
-      "Improve your website visibility on Google with technical and on-page SEO improvements.",
-    tags: ["Technical SEO", "On-page SEO", "Search visibility"],
+    description: "Get found on Google and grow your business.",
+  },
+  {
+    image: "service-img6.png",
+    title: "Website Maintenance",
+    description: "Updates, backups, security and speed.",
+  },
+  {
+    image: "service-img7.png",
+    title: "UI/UX Design",
+    description: "User-friendly and modern interfaces.",
+  },
+  {
+    image: "service-img8.png",
+    title: "Speed Optimization",
+    description: "Faster websites for better performance.",
   },
 ];
 
-const Services = () => {
-  const [reducedMotion, setReducedMotion] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  );
-  const [isInView, setIsInView] = useState(false);
-  const [isDocumentVisible, setIsDocumentVisible] = useState(!document.hidden);
-  const sectionRef = useRef(null);
-  const swiperRef = useRef(null);
-  const carouselId = "services-carousel";
+const metrics = [
+  { icon: <FaCalendarAlt aria-hidden="true" />, value: "10+", label: "Years Experience" },
+  { icon: <FaUsers aria-hidden="true" />, value: "100+", label: "Projects Completed" },
+  { icon: <FaHeart aria-hidden="true" />, value: "20+", label: "Happy Clients" },
+  { icon: <FaStar aria-hidden="true" />, value: "99%", label: "Client Satisfaction" },
+];
 
-  useEffect(() => {
-    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updatePreference = () => setReducedMotion(preference.matches);
-    preference.addEventListener("change", updatePreference);
-    return () => preference.removeEventListener("change", updatePreference);
-  }, []);
-
-  useEffect(() => {
-    const updateVisibility = () => setIsDocumentVisible(!document.hidden);
-    document.addEventListener("visibilitychange", updateVisibility);
-    return () => document.removeEventListener("visibilitychange", updateVisibility);
-  }, []);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section || !("IntersectionObserver" in window)) {
-      setIsInView(true);
-      return undefined;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.1 },
-    );
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const swiper = swiperRef.current;
-    if (!swiper || swiper.destroyed || !swiper.autoplay) return;
-
-    if (!reducedMotion && isInView && isDocumentVisible) {
-      swiper.autoplay.start();
-    } else {
-      swiper.autoplay.stop();
-    }
-  }, [isDocumentVisible, isInView, reducedMotion]);
-
-  return (
-  <section className="services" id="services" ref={sectionRef}>
+const Services = () => (
+  <section className="services" id="services">
     <div className="container">
-      <div className="section-title">
-        <h5>OUR SERVICES</h5>
-        <h2>Website Design &amp; Development Services</h2>
-        <p>
-          We help businesses create faster, more credible, and more conversion-friendly digital experiences.
-        </p>
-      </div>
-
-      <div className="services-slider-toolbar">
-        {/* <p className="services-slider-note">
-          The center card is featured. Swipe or use the arrows to explore more services.
-        </p> */}
-        <div className="services-slider-controls" aria-label="Service carousel controls">
-          <button
-            type="button"
-            aria-label="Previous service"
-            aria-controls={carouselId}
-            onClick={() => swiperRef.current?.slidePrev()}
-          >
-            <FaChevronLeft aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            aria-label="Next service"
-            aria-controls={carouselId}
-            onClick={() => swiperRef.current?.slideNext()}
-          >
-            <FaChevronRight aria-hidden="true" />
-          </button>
+      <div className="services-heading">
+        <div className="services-heading-copy">
+          <p className="services-eyebrow">OUR SERVICES</p>
+          <h2>Our Services</h2>
+          <p>Everything you need to build and grow your online presence.</p>
         </div>
+        <a className="services-all-link" href="#projects">
+          View All Projects <FaArrowRight aria-hidden="true" />
+        </a>
       </div>
 
-      <Swiper
-        id={carouselId}
-        className="services-slider"
-        modules={[Pagination, Autoplay, Keyboard, EffectCoverflow]}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-          if (reducedMotion || !isInView || !isDocumentVisible) {
-            swiper.autoplay.stop();
-          }
-        }}
-        effect="coverflow"
-        centeredSlides
-        slidesPerView="auto"
-        spaceBetween={0}
-        grabCursor
-        watchSlidesProgress
-        coverflowEffect={{
-          rotate: 20,
-          stretch: 0,
-          depth: 150,
-          modifier: 1.15,
-          slideShadows: false,
-        }}
-        pagination={{ clickable: true }}
-        keyboard={{ enabled: true, onlyInViewport: true }}
-        loop
-        speed={reducedMotion ? 0 : 750}
-        autoplay={{ delay: 4200, disableOnInteraction: false, pauseOnMouseEnter: true }}
-      >
-        {services.map((service) => (
-          <SwiperSlide key={service.number}>
-            <article className="service-card">
-              <div className="service-card-top">
-                <span className="service-icon">{service.icon}</span>
-                <span className="service-number">{service.number}</span>
-              </div>
+      <div className="services-grid">
+        {services.map((service, index) => (
+          <article className="service-card" key={service.image}>
+            <img
+              className="service-image"
+              src={`${import.meta.env.BASE_URL}images/${service.image}`}
+              alt=""
+              loading={index > 3 ? "lazy" : "eager"}
+            />
+            <div className="service-card-copy">
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <div className="service-tags">
-                {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
-              </div>
               <a href="#contact" className="service-link">
-                Discuss this service <FaArrowRight aria-hidden="true" />
+                Learn More <FaArrowRight aria-hidden="true" />
               </a>
-            </article>
-          </SwiperSlide>
+            </div>
+          </article>
         ))}
-      </Swiper>
+      </div>
+
+      <div className="services-metrics" aria-label="Business metrics">
+        {metrics.map((metric) => (
+          <div className="services-metric" key={metric.label}>
+            <span className="services-metric-icon">{metric.icon}</span>
+            <div>
+              <strong>{metric.value}</strong>
+              <span>{metric.label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
-  );
-};
+);
 
 export default Services;

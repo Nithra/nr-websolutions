@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaEnvelope, FaLinkedinIn, FaBars, FaTimes } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaBars, FaTimes } from "react-icons/fa";
 import "./../../public/css/navbar.css"
 
 const Navbar = () => {
@@ -12,7 +12,7 @@ const Navbar = () => {
     if (!("IntersectionObserver" in window)) return undefined;
 
     const sections = document.querySelectorAll(
-      "#home, #about, #experience, #services, #skills, #projects, #process, #why-choose, #contact",
+      "#home, #about, #journey, #services, #skills, #projects, #process, #why-choose",
     );
     const observer = new IntersectionObserver(
       (entries) => {
@@ -38,7 +38,7 @@ const Navbar = () => {
 
         <a href="#home" className="logo" onClick={closeMenu} aria-label="NR WebSolutions home">
           <img
-            src="/WebSolutions%20Monogram%20Logo.png"
+            src={`${import.meta.env.BASE_URL}images/logo.png`}
             alt="NR WebSolutions logo"
             className="logo-image"
           />
@@ -64,13 +64,13 @@ const Navbar = () => {
             {[
               ["home", "Home"],
               ["about", "About"],
-              ["experience", "Experience"],
+              ["journey", "Journey"],
               ["services", "Services"],
               ["skills", "Skills"],
               ["projects", "Work"],
               ["process", "Process"],
               ["why-choose", "Why me"],
-              ["contact", "Contact"],
+              ["contact", "Get a Quote"],
             ].map(([id, label]) => (
               <li key={id}>
                 <a
@@ -88,8 +88,7 @@ const Navbar = () => {
 
         <div className="nav-right">
           <a href="mailto:hello.nrwebsolutions@gmail.com"><FaEnvelope /></a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer"><FaLinkedinIn /></a>
-
+          <a href="tel:+919345046870"><FaPhone /></a>
           <a className="hire-btn" href="#contact">
             Hire Us
           </a>

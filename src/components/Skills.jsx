@@ -1,114 +1,170 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { FaArrowRight, FaTimes } from "react-icons/fa";
 import {
   FaHtml5,
   FaCss3Alt,
   FaJs,
   FaReact,
   FaBootstrap,
+  FaMobileAlt,
+  FaGlobe,
   FaWordpress,
+  FaShoppingCart,
   FaGitAlt,
   FaGithub,
   FaFigma,
   FaSearch,
-  FaBullhorn,
-  FaBrain,
+  FaBug,
+  FaTachometerAlt,
+  FaTags,
+  FaCode,
+  FaBookOpen,
+  FaPaintBrush,
+  FaImage,
+  FaPalette,
 } from "react-icons/fa";
 
 import {
   SiTailwindcss,
   SiElementor,
   SiWoocommerce,
+  SiShopify,
 } from "react-icons/si";
 import "./../../public/css/skills.css";
-const skills = [
-  { icon: <FaHtml5 />, name: "HTML5", level: 95 },
-  { icon: <FaCss3Alt />, name: "CSS3", level: 95 },
-  { icon: <FaJs />, name: "JavaScript", level: 85 },
-  { icon: <FaReact />, name: "React", level: 75 },
-  { icon: <FaBootstrap />, name: "Bootstrap", level: 95 },
-  { icon: <SiTailwindcss />, name: "Tailwind", level: 80 },
-  { icon: <FaWordpress />, name: "WordPress", level: 95 },
-  { icon: <SiElementor />, name: "Elementor", level: 95 },
-  { icon: <SiWoocommerce />, name: "WooCommerce", level: 90 },
-  { icon: <FaGitAlt />, name: "Git", level: 80 },
-  { icon: <FaGithub />, name: "GitHub", level: 80 },
-  { icon: <FaFigma />, name: "Figma", level: 75 },
-  { icon: <FaSearch />, name: "Basic SEO", level: 80 },
-  { icon: <FaBullhorn />, name: "Social Media", level: 85 },
-  { icon: <FaBrain />, name: "AI Tools", level: 90 },
-  
+const skillCategories = [
+  {
+    name: "Front-end Development",
+    skills: [
+      { icon: <FaHtml5 />, name: "HTML5" },
+      { icon: <FaCss3Alt />, name: "CSS3" },
+      { icon: <FaJs />, name: "JavaScript" },
+      { icon: <FaReact />, name: "React.js" },
+      { icon: <FaBootstrap />, name: "Bootstrap" },
+      { icon: <FaMobileAlt />, name: "Responsive Web Design" },
+      { icon: <FaGlobe />, name: "Cross-Browser Compatibility" },
+    ],
+  },
+  {
+    name: "CMS & E-commerce",
+    skills: [
+      { icon: <FaWordpress />, name: "WordPress" },
+      { icon: <SiElementor />, name: "Elementor" },
+      { icon: <FaPaintBrush />, name: "WPBakery Page Builder" },
+      { icon: <FaPaintBrush />, name: "DIVI Builder" },
+      { icon: <SiWoocommerce />, name: "WooCommerce" },
+      { icon: <SiShopify />, name: "Shopify" },
+      { icon: <FaShoppingCart />, name: "OpenCart" },
+      { icon: <FaShoppingCart />, name: "CS-Cart" },
+    ],
+  },
+  {
+    name: "Design",
+    skills: [
+      { icon: <FaFigma />, name: "Figma" },
+      { icon: <FaPaintBrush />, name: "Adobe XD" },
+      { icon: <FaImage />, name: "Photoshop (PSD)" },
+      { icon: <FaPalette />, name: "Canva" },
+    ],
+  },
+  {
+    name: "Version Control",
+    skills: [
+      { icon: <FaGitAlt />, name: "Git" },
+      { icon: <FaGithub />, name: "GitHub" },
+    ],
+  },
+  {
+    name: "SEO & Website Optimization",
+    skills: [
+      { icon: <FaSearch />, name: "Google Search Console" },
+      { icon: <FaTags />, name: "Basic On-Page SEO" },
+      { icon: <FaBug />, name: "Crawl Error Fixing" },
+      { icon: <FaTachometerAlt />, name: "Site Speed Optimization" },
+      { icon: <FaCode />, name: "Meta Tag Management" },
+      { icon: <FaBookOpen />, name: "Blog Publishing" },
+    ],
+  },
 ];
 
 function Skills() {
-  const [pausedRows, setPausedRows] = useState({
-    core: false,
-    tools: false,
-  });
+  const [skillsOpen, setSkillsOpen] = useState(false);
+  const dialogRef = useRef(null);
 
-  const renderSkillCards = (items, duplicate = false) =>
-    items.map((skill) => (
-      <div className="skill-card" key={`${duplicate ? "duplicate-" : ""}${skill.name}`}>
-        <div className="skill-icon">{skill.icon}</div>
-        <h4>{skill.name}</h4>
-        <span>{skill.level}%</span>
-        <div className="progress">
-          <div className="fill" style={{ width: `${skill.level}%` }}></div>
-        </div>
-      </div>
-    ));
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
 
-  const renderSkillScroller = (id, label, items) => (
-    <div className="skills-row" key={id}>
-      <div className="skills-scroller-controls">
-        <h3>{label}</h3>
-        <button
-          type="button"
-          className="skills-pause"
-          aria-pressed={pausedRows[id]}
-          aria-controls={`skills-scroller-${id}`}
-          onClick={() =>
-            setPausedRows((current) => ({ ...current, [id]: !current[id] }))
-          }
-        >
-          {pausedRows[id] ? "Resume scrolling" : "Pause scrolling"}
-        </button>
-      </div>
-      <div
-        id={`skills-scroller-${id}`}
-        className={`skills-scroller${pausedRows[id] ? " is-paused" : ""}`}
-        role="region"
-        aria-label={`${label} skills`}
-      >
-        <div className={`skills-track skills-track-${id}`}>
-          <div className="skills-group">{renderSkillCards(items)}</div>
-          <div className="skills-group" aria-hidden="true">
-            {renderSkillCards(items, true)}
+    if (skillsOpen && !dialog.open) dialog.showModal();
+    if (!skillsOpen && dialog.open) dialog.close();
+  }, [skillsOpen]);
+
+  return (
+    <section
+      className="skills"
+      id="skills"
+      style={{
+        "--skills-banner": `url("${import.meta.env.BASE_URL}images/skills-banner.png")`,
+      }}
+    >
+      <div className="container">
+        <div className="skills-intro">
+          <div className="skills-intro-copy">
+            <p className="skills-eyebrow">MY SKILLS</p>
+            <h2>Technologies I Work With</h2>
+            <p>Tools and technologies I use to build modern, responsive and high-performance websites.</p>
+            <button
+              className="skills-view-all"
+              type="button"
+              aria-haspopup="dialog"
+              onClick={() => setSkillsOpen(true)}
+            >
+              View All Skills <FaArrowRight aria-hidden="true" />
+            </button>
           </div>
         </div>
       </div>
-    </div>
-  );
 
-  const coreSkills = skills.slice(0, 9);
-  const toolsSkills = skills.slice(9);
-
-  return (
-    <section className="skills" id="skills">
-      <div className="container">
-
-        <div className="section-title">
-          <h5>MY SKILLS</h5>
-          <h2>Technical Skills</h2>
-          <p>
-            Technologies, CMS platforms, tools and digital skills.
-          </p>
+      <dialog
+        className="skills-dialog"
+        ref={dialogRef}
+        aria-labelledby="skills-dialog-title"
+        onClose={() => setSkillsOpen(false)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) dialogRef.current?.close();
+        }}
+      >
+        <div className="skills-dialog-content">
+          <div className="skills-dialog-heading">
+            <div>
+              <p className="skills-eyebrow">MY TOOLKIT</p>
+              <h2 id="skills-dialog-title">All Skills</h2>
+            </div>
+            <button
+              type="button"
+              className="skills-dialog-close"
+              aria-label="Close all skills"
+              onClick={() => dialogRef.current?.close()}
+            >
+              <FaTimes aria-hidden="true" />
+            </button>
+          </div>
+          <div className="skills-dialog-categories">
+            {skillCategories.map((category) => (
+              <section className="skills-dialog-category" key={category.name}>
+                <h3>{category.name}</h3>
+                <div className="skills-dialog-grid">
+                  {category.skills.map((skill) => (
+                    <article className="skills-dialog-card" key={skill.name}>
+                      <span className="skills-dialog-icon" aria-hidden="true">{skill.icon}</span>
+                      <span className="skills-dialog-name">{skill.name}</span>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
         </div>
-
-        <div className="skills-rows">
-          {renderSkillScroller("core", "Core Skills", coreSkills)}
-          {renderSkillScroller("tools", "Tools & Digital Skills", toolsSkills)}
-        </div>
-      </div>
+      </dialog>
     </section>
   );
 }

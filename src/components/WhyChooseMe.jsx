@@ -1,4 +1,11 @@
-import { FaArrowRight, FaCheck, FaQuoteLeft } from "react-icons/fa";
+import { useRef } from "react";
+import {
+  FaArrowRight,
+  FaCheck,
+  FaChevronLeft,
+  FaChevronRight,
+  FaQuoteLeft,
+} from "react-icons/fa";
 import "./../../public/css/work.css";
 
 const pricingPlans = [
@@ -64,59 +71,110 @@ const testimonials = [
   },
 ];
 
-const WhyChooseMe = () => (
-  <section className="why-choose" id="why-choose">
-    <div className="container">
-      <div className="section-title">
-        <h5>Our packages</h5>
-        <h2>Simple &amp; Transparent Pricing</h2>
-        <p>Flexible packages designed for businesses at every stage of growth.</p>
-      </div>
+const WhyChooseMe = () => {
+  const testimonialScroller = useRef(null);
 
-      <div className="pricing-grid">
-        {pricingPlans.map((plan) => (
-          <article key={plan.name} className={plan.featured ? "pricing-card pricing-card-featured" : "pricing-card"}>
-            <div className="pricing-header">
-              <h3>{plan.name}</h3>
-              {plan.featured && <span className="pricing-badge">Most Popular</span>}
+  const scrollTestimonials = (direction) => {
+    const scroller = testimonialScroller.current;
+    const card = scroller?.firstElementChild;
+    if (!scroller || !card) return;
+
+    const gap = Number.parseFloat(window.getComputedStyle(scroller).columnGap) || 0;
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "auto"
+      : "smooth";
+
+    scroller.scrollBy({ left: direction * (card.getBoundingClientRect().width + gap), behavior });
+  };
+
+  return (
+    <section className="why-choose" id="why-choose">
+      <div className="container">
+        <div className="pricing-section" hidden>
+          <div className="section-title">
+            <h5>Our packages</h5>
+            <h2>Simple &amp; Transparent Pricing</h2>
+            <p>Flexible packages designed for businesses at every stage of growth.</p>
+          </div>
+
+          <div className="pricing-grid">
+            {pricingPlans.map((plan) => (
+              <article
+                key={plan.name}
+                className={plan.featured ? "pricing-card pricing-card-featured" : "pricing-card"}
+              >
+                <div className="pricing-header">
+                  <h3>{plan.name}</h3>
+                  {plan.featured && <span className="pricing-badge">Most Popular</span>}
+                </div>
+                <p className="pricing-description">{plan.description}</p>
+                <div className="pricing-price">{plan.price}</div>
+                <ul className="pricing-features">
+                  {plan.features.map((feature) => (
+                    <li key={feature}><FaCheck /> {feature}</li>
+                  ))}
+                </ul>
+                <button type="button" className="pricing-btn">Get Started <FaArrowRight /></button>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="testimonials-wrap">
+          <div className="testimonials-heading">
+            <div className="section-title section-title-small">
+              <h5>Client feedback</h5>
+              <h2>What My Clients Say</h2>
+              <p>Real feedback from businesses we’ve helped grow online.</p>
             </div>
-            <p className="pricing-description">{plan.description}</p>
-            <div className="pricing-price">{plan.price}</div>
-            <ul className="pricing-features">
-              {plan.features.map((feature) => (
-                <li key={feature}><FaCheck /> {feature}</li>
+          </div>
+
+          <div className="testimonials-carousel">
+            <div className="testimonials-controls" role="group" aria-label="Testimonial controls">
+              <button
+                type="button"
+                aria-label="Scroll testimonials left"
+                onClick={() => scrollTestimonials(-1)}
+              >
+                <FaChevronLeft aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                aria-label="Scroll testimonials right"
+                onClick={() => scrollTestimonials(1)}
+              >
+                <FaChevronRight aria-hidden="true" />
+              </button>
+            </div>
+
+            <div
+              className="testimonials-grid"
+              ref={testimonialScroller}
+              role="region"
+              aria-label="Client testimonials"
+              tabIndex={0}
+            >
+              {testimonials.map((item) => (
+                <article key={item.name} className="testimonial-card">
+                  <FaQuoteLeft className="testimonial-icon" />
+                  <p className="testimonial-quote">“{item.quote}”</p>
+                  <div className="testimonial-stars" aria-label={`${item.rating} star review`}>
+                    {Array.from({ length: item.rating }).map((_, index) => (
+                      <span key={index}>★</span>
+                    ))}
+                  </div>
+                  <div className="testimonial-person">
+                    <h4>{item.name}</h4>
+                    <span>{item.role}</span>
+                  </div>
+                </article>
               ))}
-            </ul>
-            <button type="button" className="pricing-btn">Get Started <FaArrowRight /></button>
-          </article>
-        ))}
-      </div>
-
-      <div className="testimonials-wrap">
-        <div className="section-title section-title-small">
-          <h5>Client feedback</h5>
-          <h2>What My Clients Say</h2>
-          <p>Real feedback from businesses we’ve helped grow online.</p>
-        </div>
-
-        <div className="testimonials-grid">
-          {testimonials.map((item) => (
-            <article key={item.name} className="testimonial-card">
-              <FaQuoteLeft className="testimonial-icon" />
-              <p className="testimonial-quote">“{item.quote}”</p>
-              <div className="testimonial-stars" aria-label={`${item.rating} star review`}>
-                {Array.from({ length: item.rating }).map((_, index) => <span key={index}>★</span>)}
-              </div>
-              <div className="testimonial-person">
-                <h4>{item.name}</h4>
-                <span>{item.role}</span>
-              </div>
-            </article>
-          ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default WhyChooseMe;
